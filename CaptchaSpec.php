@@ -2,7 +2,7 @@
 
 require_once 'Captcha.php';
 
-class CaptchaTest extends PHPUnit_Framework_TestCase {
+class CaptchaSpec extends PHPUnit_Framework_TestCase {
   function test1plus1equal2() {
     $captcha = new Captcha(1, 1, 1);
     $this->assertEquals(2, $captcha->result());
