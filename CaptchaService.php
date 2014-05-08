@@ -8,8 +8,9 @@ class CaptchaService {
     $this->random = $random;
   }
 
-  function __construct() {
-    $this->random = new Randomizer();
+  function __construct($myRandom) {
+    //$this->random = new Randomizer();
+    $this->random = $myRandom;
   }
 
   function randomCaptcha() {

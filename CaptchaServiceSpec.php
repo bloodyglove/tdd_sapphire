@@ -6,15 +6,15 @@ class CaptchaServiceSpec extends PHPUnit_Framework_TestCase {
     $this->assertTrue($captchaService->randomCaptcha() instanceof Captcha);
   }
 /*
-  function testRandomOperandShouldReturnInRange1to9() {
+  function testRandomCaptcha() {
     $captchaService = new CaptchaService();
     $captcha = $captchaService->randomCaptcha();
     $this->assertEquals(4, $captcha->result());
   }
  */
 
-  function testRandomOperandShouldReturnInRange1to9() {
-    $captchaService = new CaptchaService();
+
+  function testRandomCaptcha() {
     $mockRandom = $this->getMock('Randomizer');
     $mockRandom->expects($this->any())
                ->method('operand')
@@ -22,8 +22,10 @@ class CaptchaServiceSpec extends PHPUnit_Framework_TestCase {
     $mockRandom->expects($this->once())
                ->method('operator')
                ->will($this->returnValue(1));
-    $captchaService->setRandom($mockRandom);
+    $captchaService = new CaptchaService($mockRandom);
+//    $captchaService->setRandom($mockRandom);
     $captcha = $captchaService->randomCaptcha();
     $this->assertEquals(4, $captcha->result());
   }
+
 }
